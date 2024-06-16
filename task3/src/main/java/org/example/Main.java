@@ -10,29 +10,16 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        byte a[] = {-128+255, -128+30, -128};
+        int Field[] = {1, 0, 1, 2, 2, 1, 2, 0, 0};
 
-        int i = a[0]+128;
-        int j = a[1]+128;
-        int k = a[2]+128;
+        // Add keys and values (Country, City)
 
-        ArrayList<String> Field = new ArrayList<>();
+        byte a[] = {-128, -128, -128};
 
-        for (int t = 9; t > 0; t--) {
-            if (i > j & i > k) {
-                i -= t*t;
-                Field.add(0, "X");
-            }
-            else if (j > i & j > k) {
-                j -= t*t;
-                Field.add(0, "0");
-            }
-            else {
-                k -= t*t;
-                Field.add(0, " ");
-            }
+        for (int i = 0; i < 9; i++) {
+            a[Field[i]] += (i+1)*(i+1);
         }
-
+        FileUtils.writeByteArrayToFile(new File("C:\\Users\\workstation\\Documents\\qt\\sql\\file"), a);
     }
 
 }
