@@ -1,1 +1,16 @@
-FROM vulnerables/web-dvwa
+name: vampi_docker
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: vulnerables/web-dvwa
+    - run: docker run -it -d --rm --name dvwa -p 8080:80 vulnerables/web-dvwa
