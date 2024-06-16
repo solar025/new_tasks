@@ -1,2 +1,1 @@
 FROM vulnerables/web-dvwa
-RUN -it -d --rm --name dvwa -p 8080:80 vulnerables/web-dvwa
