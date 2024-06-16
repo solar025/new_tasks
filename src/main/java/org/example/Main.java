@@ -6,52 +6,23 @@ import java.io.File;
 import java.io.IOException;
 import  java.lang.Object;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Hello world!");
-        createBackup("C:\\Users\\workstation\\Documents\\qt\\sql");
 
-        byte a[] = {-128+255, -128+30, -128};
+        int Field[] = {1, 0, 1, 2, 2, 1, 2, 0, 0};
 
+        HashMap<Integer, String> Pieces = new HashMap<Integer, String>();
 
-        int i = a[0]+128;
-        int j = a[1]+128;
-        int k = a[2]+128;
-
-        ArrayList<String> Field = new ArrayList<>();
-
-        for (int t = 9; t > 0; t--) {
-            if (i > j & i > k) {
-                i -= t*t;
-                Field.add(0, "X");
-            }
-            else if (j > i & j > k) {
-                j -= t*t;
-                Field.add(0, "0");
-            }
-            else {
-                k -= t*t;
-                Field.add(0, " ");
-            }
-        }
+        // Add keys and values (Country, City)
+        Pieces.put(0, " ");
+        Pieces.put(1, "X");
+        Pieces.put(2, "0");
 
         for (int l = 0; l < 3; l++) {
-            System.out.println(Field.get(l * 3) + Field.get(1 + l*3) + Field.get(2 + l*3));
+            System.out.println(Pieces.get(Field[l * 3]) + Pieces.get(Field[1 + l*3]) + Pieces.get(Field[2 + l*3]));
         }
     }
-
-    public static void createBackup(String path){
-
-        File source = new File(path);
-        File dest = new File(path+"\\backup");
-        new File(path+"\\backup").mkdirs();
-        try {
-            FileUtils.copyDirectory(source, dest);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
