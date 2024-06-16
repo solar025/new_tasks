@@ -9,19 +9,20 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        createBackup("C:\\Users\\workstation\\Documents\\qt\\sql");
-    }
 
-    public static void createBackup(String path){
+        int Field[] = {1, 0, 1, 2, 2, 1, 2, 0, 0};
 
-        File source = new File(path);
-        File dest = new File(path+"\\backup");
-        new File(path+"\\backup").mkdirs();
-        try {
-            FileUtils.copyDirectory(source, dest);
-        } catch (IOException e) {
-            e.printStackTrace();
+        HashMap<Integer, String> Pieces = new HashMap<Integer, String>();
+
+        // Add keys and values (Country, City)
+        Pieces.put(0, " ");
+        Pieces.put(1, "X");
+        Pieces.put(2, "0");
+
+        for (int l = 0; l < 3; l++) {
+            System.out.println(Pieces.get(Field[l * 3]) + Pieces.get(Field[1 + l*3]) + Pieces.get(Field[2 + l*3]));
         }
+
     }
 
 }
